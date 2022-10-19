@@ -1,0 +1,18 @@
+package com.hexaware.onetomanydemo.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import com.hexaware.onetomanydemo.entity.Book;
+import com.hexaware.onetomanydemo.exception.ResourceNotFoundException;
+
+public interface IBookService {
+
+	public List<Book> findAllBooks();
+	public Optional<Book> getBookById(Long bookId)throws ResourceNotFoundException;
+	public void deleteBookById(Long bookId)throws ResourceNotFoundException;
+	public Book updateBookById()throws ResourceNotFoundException;
+	public Book saveBookById();
+	
+	
+}

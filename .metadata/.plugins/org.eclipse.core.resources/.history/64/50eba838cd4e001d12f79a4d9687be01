@@ -1,0 +1,10 @@
+package com.hexaware.onetoonedemo.entity;
+
+public class Book1 {
+	private Long bookid;
+	
+	private String bookname;
+	
+	
+
+}

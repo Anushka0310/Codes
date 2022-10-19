@@ -1,0 +1,14 @@
+package com.hexaware.onetomanydemo.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Story {
+	@Id
+	private long storyId;
+	
+	private long storyName;
+	
+
+}

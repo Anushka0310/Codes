@@ -1,0 +1,76 @@
+package com.hexaware.onetoonedemo.entity;
+
+public class Book1 {
+	import java.util.ArrayList;
+	import java.util.List;
+
+	import javax.persistence.CascadeType;
+	import javax.persistence.Column;
+	import javax.persistence.Entity;
+	import javax.persistence.FetchType;
+	import javax.persistence.GeneratedValue;
+	import javax.persistence.GenerationType;
+	import javax.persistence.Id;
+	import javax.persistence.JoinColumn;
+	import javax.persistence.OneToMany;
+	import javax.persistence.Table;
+
+	@Entity
+	@Table(name = "book")
+	public class Book1 {
+		
+		@Id
+		@GeneratedValue(strategy = GenerationType.AUTO)
+		@Column(name = "book_id")
+		private Long bookId;
+		
+		@Column(name = "book_name")
+		private String bookName;
+		
+		@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+		@JoinColumn(name="book_id_fk",referencedColumnName = "book_id")
+		private List<Story> storyList = new ArrayList<>();
+		
+		public List<Story> getStoryList() {
+			return storyList;
+		}
+
+		public void setStoryList(List<Story> storyList) {
+			this.storyList = storyList;
+		}
+
+		public Book1() {
+			// TODO Auto-generated constructor stub
+		}
+
+		public Book1(String bookName) {
+			super();
+			this.bookName = bookName;
+		}
+
+		public Long getBookId() {
+			return bookId;
+		}
+
+		public void setBookId(Long bookId) {
+			this.bookId = bookId;
+		}
+
+		public String getBookName() {
+			return bookName;
+		}
+
+		public void setBookName(String bookName) {
+			this.bookName = bookName;
+		}
+
+		@Override
+		public String toString() {
+			return "Book [bookId=" + bookId + ", bookName=" + bookName + "]";
+		}
+		
+		
+
+	}
+
+}

@@ -1,0 +1,35 @@
+package com.hexaware.onetomanydemo.service;
+
+StoryServiceImpl implements IStoryService{
+
+	@Autowired
+	private StoryRepository storyRepo;
+
+	@Override
+	public List<Story> findAllStories() {
+		return storyRepo.findAll();
+	}
+
+	@Override
+	public Optional<Story> getStoryById(Long storyid) throws ResourceNotFoundException {
+		return storyRepo.findById(storyid);
+	}
+
+	@Override
+	public void deleteStoryById(Long storyid) throws ResourceNotFoundException {
+		storyRepo.deleteById(storyid);		
+	}
+
+	@Override
+	public Story updateStoryById(Story newstory, Long storyid) throws ResourceNotFoundException {
+		Story oldStorydetails = getStoryById(storyid)
+				.orElseThrow(() -> new ResourceNotFoundException("story with id" + storyid + " not found"));
+		oldStorydetails.setStoryName(newstory.getStoryName());
+		return storyRepo.save(oldStorydetails);
+	}
+
+	@Override
+	public Story saveStory(Story story) {
+		return storyRepo.save(story);
+	}
+}

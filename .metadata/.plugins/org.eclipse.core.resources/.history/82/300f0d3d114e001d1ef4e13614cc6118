@@ -1,0 +1,5 @@
+package com.example.loanmanagementsystem.exception;
+
+public class ResourceNotFound {
+
+}

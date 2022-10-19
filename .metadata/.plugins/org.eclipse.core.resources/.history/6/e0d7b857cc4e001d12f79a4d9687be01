@@ -1,0 +1,54 @@
+package com.hexaware.onetomanydemo.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.hexaware.onetomanydemo.entity.Book;
+import com.hexaware.onetomanydemo.exception.ResourceNotFoundException;
+import com.hexaware.onetomanydemo.repository.BookRepository;
+import com.hexaware.onetomanydemo.service.IBookService;
+
+@Service
+public class BookController implements IBookService{
+	
+	@Autowired
+	private BookRepository bookRepo;
+
+	@Override
+	public List<Book> findAllBooks() {
+		return bookRepo.findAll();
+	}
+
+	@Override
+	public Optional<Book> getBookById(Long bookid) throws ResourceNotFoundException {
+		return bookRepo.findById(bookid);
+	}
+
+	@Override
+	public void deleteBookById(Long bookid) throws ResourceNotFoundException {
+		bookRepo.deleteById(bookid);		
+	}
+
+	@Override
+	public Book updateBookById(Book newbook, Long bookid) throws ResourceNotFoundException {
+		Book oldBookdetails = getBookById(bookid)
+				.orElseThrow(() -> new ResourceNotFoundException("book with id" + bookid + " not found"));
+		oldBookdetails.setBookName(newbook.getBookName());
+		return bookRepo.save(oldBookdetails);
+	}
+
+	@Override
+	public Book saveBook(Book book) {
+		return bookRepo.save(book);
+	}
+
+	@Override
+	public Book saveBookById(Book book) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

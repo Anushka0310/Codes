@@ -1,0 +1,52 @@
+package com.hexaware.onetomanydemo.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.hexaware.onetomanydemo.entity.Book;
+import com.hexaware.onetomanydemo.exception.ResourceNotFoundException;
+import com.hexaware.onetomanydemo.service.IBookService;
+
+@RestController
+@RequestMapping("/bookapi")
+public class BookController {
+	
+	@Autowired
+	private IBookService bookService;
+	
+	@GetMapping("/findallbooks")
+	public List<Book> findAllBooks(){
+		return bookService.findAllBooks();
+	}
+	
+	@GetMapping("/getbookbyid/{bookid}")
+	public Optional<Book> getBookById(@PathVariable("bookid") Long bookid) throws ResourceNotFoundException{
+		return bookService.getBookById(bookid);
+	}
+	
+	@DeleteMapping("/deletebookbyid/{bookid}")
+	public void deleteBookById(@PathVariable("bookid") Long bookid) throws ResourceNotFoundException{
+		bookService.deleteBookById(bookid);
+	}
+	
+	@PutMapping("/updatebookbyid/{bookid}")
+	public Book updateBookById(@RequestBody Book book,@PathVariable("bookid")  Long bookid)throws ResourceNotFoundException{
+		return bookService.updateBookById(book, bookid);
+	}
+	
+	@PostMapping("/savebook")
+	public Book saveBook(@RequestBody Book book) {
+		return bookService.saveBook(book);
+	}
+
+}

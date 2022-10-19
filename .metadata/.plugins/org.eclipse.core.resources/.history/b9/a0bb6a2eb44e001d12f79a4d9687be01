@@ -1,0 +1,5 @@
+package com.hexaware.onetomanydemo.service;
+
+public interface IStoryService {
+
+}

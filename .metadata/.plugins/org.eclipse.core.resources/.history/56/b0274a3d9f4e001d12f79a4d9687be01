@@ -1,0 +1,5 @@
+package com.hexaware.onetomanydemo.entity;
+
+public class Story {
+
+}

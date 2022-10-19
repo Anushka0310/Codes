@@ -1,0 +1,5 @@
+package com.hexaware.onetomanydemo.exception;
+
+public class ResourceNotFoundException extends Exception {
+
+}

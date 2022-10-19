@@ -1,0 +1,5 @@
+package com.hexaware.onetoonedemo.exception;
+
+public class ResourceNotFoundException {
+
+}

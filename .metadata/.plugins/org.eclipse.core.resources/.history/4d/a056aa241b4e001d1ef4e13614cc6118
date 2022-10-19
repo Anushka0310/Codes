@@ -1,0 +1,5 @@
+package com.example.loanmanagementsystem.controller;
+
+public class ManagerController {
+
+}

@@ -1,0 +1,5 @@
+package com.hexaware.onetomanydemo.repository;
+
+public interface StoryRepository {
+
+}

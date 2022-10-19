@@ -1,0 +1,47 @@
+package com.hexaware.onetomanydemo.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Story {
+	@Id
+	private long storyId;
+	
+	private long storyName;
+
+	public Story() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Story(long storyId, long storyName) {
+		super();
+		this.storyId = storyId;
+		this.storyName = storyName;
+	}
+
+	public long getStoryId() {
+		return storyId;
+	}
+
+	public void setStoryId(long storyId) {
+		this.storyId = storyId;
+	}
+
+	public long getStoryName() {
+		return storyName;
+	}
+
+	public void setStoryName(long storyName) {
+		this.storyName = storyName;
+	}
+
+	@Override
+	public String toString() {
+		return "Story [storyId=" + storyId + ", storyName=" + storyName + "]";
+	}
+	
+	
+
+}

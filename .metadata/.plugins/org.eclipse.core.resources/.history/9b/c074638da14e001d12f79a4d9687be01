@@ -1,0 +1,49 @@
+package com.hexaware.onetomanydemo.entity;
+
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+
+@Entity
+public class Book {
+	@Id
+	private long bookId;
+	
+	private long bookName;
+
+	public Book() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Book(long bookId, long bookName) {
+		super();
+		this.bookId = bookId;
+		this.bookName = bookName;
+	}
+
+	public long getBookId() {
+		return bookId;
+	}
+
+	public void setBookId(long bookId) {
+		this.bookId = bookId;
+	}
+
+	public long getBookName() {
+		return bookName;
+	}
+
+	public void setBookName(long bookName) {
+		this.bookName = bookName;
+	}
+
+	@Override
+	public String toString() {
+		return "Book [bookId=" + bookId + ", bookName=" + bookName + "]";
+	}
+	
+	
+
+}

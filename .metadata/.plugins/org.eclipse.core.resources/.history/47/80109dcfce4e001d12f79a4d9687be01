@@ -1,0 +1,9 @@
+package com.hexaware.onetoonedemo.entity;
+
+public class BookDetails {
+	private Long price;
+	
+	private String author;
+	
+
+}
